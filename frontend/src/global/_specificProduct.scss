@@ -1,0 +1,21 @@
+.container.specificProduct {
+  .container-img {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    .con-select {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: fit-content;
+      width: 8%;
+      img {
+        width: 100%;
+        margin: 3px;
+      }
+    }
+    > img {
+    }
+  }
+}

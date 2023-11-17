@@ -1,0 +1,22 @@
+.navbar {
+  overflow: hidden;
+  height: 60vh;
+
+  video {
+    position: absolute;
+    z-index: -2;
+  }
+  .container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+      img {
+        width: 15em;
+        opacity: 0.5;
+        border-radius: 32px;
+        object-fit: contain;
+      }
+    }
+  }
+}

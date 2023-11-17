@@ -2,11 +2,11 @@ type Products = {
 	id?: string
 	productsName: string
 	price: number
-	date: date
+	date: string
 	keyword: string
 	available: boolean
 	img: string
-	location: sting
+	location: string
 	status: string
 	productsCode: number
 	description: string
