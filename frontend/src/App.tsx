@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/products" />} />
         <Route path="/products" element={<ProductsShows />} />
-        <Route path="/products/id/" element={<SpecificProducts />} />
+        <Route path="/products/:id" element={<SpecificProducts />} />
         {/* <Route path="*" element={ />} /> */}
       </Routes>
     </div>

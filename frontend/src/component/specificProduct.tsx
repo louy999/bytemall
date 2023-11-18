@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import env from "../env";
-import imgTest from "../img/bytemallLoco.png";
 import ProductAvailable from "../layout/productAvailable";
 import ProductNotAvailable from "../layout/productNotAvailable";
 
 const SpecificProducts = () => {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const getSpsProduct = async () => {
+  const getAllProducts = async () => {
     try {
       axios
-        .get(`${env.url}/pro/${window.location.search.slice(1)}`)
+        .get(`${env.url}/pro/${window.location.pathname.slice(10)}`)
         .then((res) => {
-          console.log(res.data.data);
           setData(res.data.data);
+          console.log(res.data.data);
         });
     } catch (error: any) {
       console.log(error);
@@ -23,15 +22,18 @@ const SpecificProducts = () => {
     }
   };
   useEffect(() => {
-    getSpsProduct();
+    getAllProducts();
   }, []);
   return (
-    // <div className="container specificProduct">
     <>
       {loading && <p>Loading...</p>}
-      {data.map((p: any) =>
-        p.available ? <ProductAvailable /> : <ProductNotAvailable />
-      )}
+      <div className="container specificProduct">
+        {data?.available ? (
+          <ProductAvailable data={data} />
+        ) : (
+          <ProductNotAvailable data={data} />
+        )}
+      </div>
     </>
   );
 };

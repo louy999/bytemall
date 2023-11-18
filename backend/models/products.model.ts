@@ -15,7 +15,7 @@ class ProductsModel {
 			const result = await connect.query(sql, [
 				p.productsName,
 				p.price,
-				p.date === '' ? Date.now() : p.date,
+				p.date === '' ? new Date() : p.date,
 				p.keyword,
 				p.available,
 				p.img,

@@ -53,10 +53,7 @@ const ProductsShows = () => {
                 <h6 className="card-subtitle mb-2 text-body-secondary">
                   {p.price}ج
                 </h6>
-                <NavLink
-                  to={`/products/id/?${p.id}`}
-                  className="btn btn-primary"
-                >
+                <NavLink to={`/products/${p.id}`} className="btn btn-primary">
                   للتفاصيل
                 </NavLink>
               </div>
