@@ -14,6 +14,20 @@ const ProductNotAvailable = (props: any) => {
           <img src={imgTest} alt="" />
         </div>
       </div>
+      <div className="container-details">
+        <h1>
+          {props.data?.productsname}({props.data?.productscode})
+        </h1>
+        <div className="des">{props.data?.description}</div>
+        <div> تم البيع</div>
+
+        <div> المكان : {props.data?.location}</div>
+        <div>
+          {props.data?.keyword.map((p: any) => (
+            <span>{p} </span>
+          ))}
+        </div>
+      </div>
     </>
   );
 };

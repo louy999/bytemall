@@ -1,8 +1,6 @@
-import imgTest from "../img/bytemallLoco.png";
+import imgTest from "../img/chare-3d-model-fbx.jpg";
 
 const ProductAvailable = (props: any) => {
-  const times = new Date(props.data.date);
-
   return (
     <>
       <div className="container-img">
@@ -23,16 +21,14 @@ const ProductAvailable = (props: any) => {
         <div className="des">{props.data.description}</div>
         <div>السعر : {props.data.price} ج</div>
 
-        <div>
-          <span> المكان : {props.data.location}</span>
-          <span>الحالة : {props.data.status}</span>
-        </div>
-        <div>{times.toDateString()}</div>
+        <div> المكان : {props.data.location}</div>
+        <div>الحالة : {props.data.status}</div>
         <div>
           {props.data.keyword.map((p: any) => (
-            <span>{p}/</span>
+            <span>{p} </span>
           ))}
         </div>
+        <div>للتواصل : 01092042027</div>
       </div>
     </>
   );

@@ -1,23 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import imgTest from "../img/bytemallLoco.png";
+import imgTest from "../img/chare-3d-model-fbx.jpg";
 import axios from "axios";
 import env from "../env";
 import Navbar from "./navbar";
-interface UserData {
-  id?: String;
-  productsName: String;
-  price: number;
-  date: String;
-  keyword: String;
-  available: boolean;
-  img: String;
-  location: String;
-  status: String;
-  productsCode: number;
-  description: String;
-}
+
 const ProductsShows = () => {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -36,6 +24,11 @@ const ProductsShows = () => {
   useEffect(() => {
     getAllProducts();
   }, []);
+  const times = (dateN: any) => {
+    return new Date(dateN);
+  };
+  // console.log(times(1700245523604).props.);
+
   return (
     <>
       <Navbar />
@@ -57,11 +50,7 @@ const ProductsShows = () => {
                   للتفاصيل
                 </NavLink>
               </div>
-              <div className="card-footer">
-                <small className="text-body-secondary">
-                  Last Posted 3 mins ago
-                </small>
-              </div>
+              <div className="card-footer">{p.date}</div>
             </div>
           ) : (
             ""

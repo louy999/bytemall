@@ -2,9 +2,11 @@
   display: flex;
   direction: rtl;
   align-items: center;
+
   height: 100vh;
   .container-img {
     width: 50%;
+    height: 50%;
     display: flex;
     justify-content: start;
     flex-wrap: wrap;
@@ -27,6 +29,8 @@
     }
   }
   .container-details {
+    width: 50%;
+    height: 55%;
     margin-right: 2em;
     h1 {
       font-weight: bold;
@@ -35,7 +39,7 @@
     }
     .des {
       font-size: 1.2em;
-      margin: 1em 0;
+      margin: 2em 0;
       width: 70%;
     }
   }
