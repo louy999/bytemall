@@ -17,7 +17,7 @@ class ProductsModel {
 				p.price,
 				p.date === '' ? new Date().toDateString() : p.date,
 				p.keyword,
-				p.available,
+				p.available === '' ? (p.available = true) : (p.available = false),
 				p.img,
 				p.location,
 				p.status,

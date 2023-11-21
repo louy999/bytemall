@@ -4,7 +4,7 @@ type Products = {
 	price: number
 	date: string
 	keyword: string
-	available: boolean
+	available: string | boolean
 	img: string
 	location: string
 	status: string
