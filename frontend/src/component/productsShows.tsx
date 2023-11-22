@@ -12,11 +12,9 @@ const ProductsShows = () => {
   const getAllProducts = async () => {
     try {
       axios.get(`${env.url}/pro`).then((res) => {
-        console.log(res.data.data);
         setData(res.data.data);
       });
     } catch (error: any) {
-      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -24,10 +22,6 @@ const ProductsShows = () => {
   useEffect(() => {
     getAllProducts();
   }, []);
-  const times = (dateN: any) => {
-    return new Date(dateN);
-  };
-  // console.log(times(1700245523604).props.);
 
   return (
     <>
@@ -37,7 +31,11 @@ const ProductsShows = () => {
         {data?.map((p: any): any =>
           p.available ? (
             <div className="card" key={p.id}>
-              <img src={imgTest} className="card-img-top" alt="..." />
+              <img
+                src={`${env.img}/image/${p.img[0]}`}
+                className="card-img-top"
+                alt="..."
+              />
               <div className="card-body">
                 <h5 className="card-title">
                   {p.productsname} ({p.productscode})

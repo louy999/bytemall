@@ -8,7 +8,6 @@ const Dashboard = () => {
     if (localStorage.items === undefined) {
       navigate("/dash/lock");
     } else {
-      console.log("no");
     }
   }, []);
   return (

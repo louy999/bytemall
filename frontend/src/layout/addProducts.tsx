@@ -1,154 +1,183 @@
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
 import React, { useState } from "react";
-
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+import axios from "axios";
+import env from "../env";
 
 export default function BasicModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const [input, setInput] = useState({
+  interface InputState {
+    productsName: string;
+    price: number;
+    keyword: any;
+    available: string;
+    img: string[];
+    location: string;
+    status: string;
+    description: string;
+  }
+
+  const [input, setInput] = useState<InputState>({
     productsName: "",
-    price: "",
-    date: "",
-    keyword: "",
+    price: 12,
+    keyword: [],
     available: "",
-    timeCreated: "",
-    img: "",
+    img: [],
     location: "",
     status: "",
-    productsCode: "",
     description: "",
   });
+  const [file, setFile] = useState<any>(null);
+  const [showImg, setShowImg] = useState<any>("");
+  const [err, setErr] = useState<any>("");
+
   const handelChange = (e: any) => {
-    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    console.log(input);
+    if (e.target.name === "keyword") {
+      // If the target is the keyword, split the value into an array
+      setInput((prev) => ({
+        ...prev,
+        [e.target.name]: e.target.value.split(" "),
+      }));
+    } else {
+      // Otherwise, update the state normally
+      setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    }
+  };
+  const handleFileChange = (event: any) => {
+    setFile(event.target.files[0]);
+  };
+  const addImg = () => {
+    if (file !== null) {
+      const formData = new FormData();
+      formData.append("image", file);
+      axios
+        .post(`${env.img}/upload`, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then((res: any) => {
+          input.img.push(res.data);
+          return setShowImg(
+            input.img.map((i) => (
+              <img src={`${env.img}/image/${i}`} alt="" className="rounded" />
+            ))
+          );
+        });
+    } else {
+      setErr("اختار الصورة اولا");
+      setTimeout(() => {
+        setErr("");
+      }, 5000);
+    }
+  };
+  const addProjects = async (e: any) => {
+    e.preventDefault();
+    try {
+      await axios.post(`${env.url}/pro`, input);
+    } catch (error) {}
   };
   return (
-    <div>
-      <Button onClick={handleOpen}>Open modal</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add New Products
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <>
-              <div className="mb-3">
-                <label
-                  htmlFor="exampleFormControlInput1"
-                  className="form-label"
-                >
-                  اسم المنتج
-                </label>
-                <input
-                  type="text"
-                  onChange={handelChange}
-                  name="productsName"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                />
-              </div>
-              <div className="mb-3">
-                <label
-                  htmlFor="exampleFormControlInput1"
-                  className="form-label"
-                >
-                  سعر المنتج
-                </label>
-                <input
-                  type="text"
-                  onChange={handelChange}
-                  name="price"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                />
-              </div>
-              <div className="mb-3">
-                <label
-                  htmlFor="exampleFormControlTextarea1"
-                  className="form-label"
-                >
-                  كلمات مفتاحية
-                </label>
-                <textarea
-                  className="form-control"
-                  onChange={handelChange}
-                  name="keyword"
-                  id="exampleFormControlTextarea1"
-                ></textarea>
-              </div>
-              <div className="mb-3">
-                <input className="form-control" type="file" id="formFile" />
-              </div>
+    <form className="container">
+      <div className="mb-3">
+        <label htmlFor="exampleFormControlInput1" className="form-label">
+          اسم المنتج
+        </label>
+        <input
+          type="text"
+          required
+          onChange={handelChange}
+          name="productsName"
+          className="form-control"
+          id="exampleFormControlInput1"
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="exampleFormControlInput1" className="form-label">
+          سعر المنتج
+        </label>
+        <input
+          type="number"
+          onChange={handelChange}
+          required
+          name="price"
+          className="form-control"
+          id="exampleFormControlInput1"
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="exampleFormControlTextarea1" className="form-label">
+          كلمات مفتاحية
+        </label>
+        <textarea
+          className="form-control"
+          onChange={handelChange}
+          required
+          name="keyword"
+          id="exampleFormControlTextarea1"
+        ></textarea>
+      </div>
 
-              <div className="mb-3">
-                <label
-                  htmlFor="exampleFormControlInput1"
-                  className="form-label"
-                >
-                  موقع المنتج
-                </label>
-                <input
-                  type="text"
-                  onChange={handelChange}
-                  name="location"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                />
-              </div>
-              <div className="mb-3">
-                <label
-                  htmlFor="exampleFormControlInput1"
-                  className="form-label"
-                >
-                  حالة المنتج
-                </label>
-                <input
-                  type="text"
-                  onChange={handelChange}
-                  name="status"
-                  className="form-control"
-                  id="exampleFormControlInput1"
-                />
-              </div>
-              <div className="mb-3">
-                <label
-                  htmlFor="exampleFormControlTextarea1"
-                  className="form-label"
-                >
-                  وصف المنتج
-                </label>
-                <textarea
-                  onChange={handelChange}
-                  name="description"
-                  className="form-control"
-                  id="exampleFormControlTextarea1"
-                ></textarea>
-              </div>
-              <input type="button" value="اضافة" className="btn btn-primary" />
-            </>
-          </Typography>
-        </Box>
-      </Modal>
-    </div>
+      <div className="input-group">
+        <input
+          type="file"
+          className="form-control"
+          id="inputGroupFile04"
+          aria-describedby="inputGroupFileAddon04"
+          aria-label="Upload"
+          onChange={handleFileChange}
+        />
+        <button
+          className="btn btn-outline-secondary"
+          type="button"
+          id="inputGroupFileAddon04"
+          onClick={addImg}
+        >
+          Button
+        </button>
+      </div>
+      <div>{showImg}</div>
+      <div>{err}</div>
+
+      <div className="mb-3">
+        <label htmlFor="exampleFormControlInput1" className="form-label">
+          موقع المنتج
+        </label>
+        <input
+          type="text"
+          onChange={handelChange}
+          name="location"
+          required
+          className="form-control"
+          id="exampleFormControlInput1"
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="exampleFormControlInput1" className="form-label">
+          حالة المنتج
+        </label>
+        <input
+          type="text"
+          required
+          onChange={handelChange}
+          name="status"
+          className="form-control"
+          id="exampleFormControlInput1"
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="exampleFormControlTextarea1" className="form-label">
+          وصف المنتج
+        </label>
+        <textarea
+          onChange={handelChange}
+          name="description"
+          className="form-control"
+          id="exampleFormControlTextarea1"
+          required
+        ></textarea>
+      </div>
+      <input
+        type="submit"
+        value="اضافة"
+        className="btn btn-primary"
+        onClick={addProjects}
+      />
+    </form>
   );
 }

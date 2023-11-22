@@ -13,10 +13,8 @@ const SpecificProducts = () => {
         .get(`${env.url}/pro/${window.location.pathname.slice(10)}`)
         .then((res) => {
           setData(res.data.data);
-          console.log(res.data.data);
         });
     } catch (error: any) {
-      console.log(error);
     } finally {
       setLoading(false);
     }

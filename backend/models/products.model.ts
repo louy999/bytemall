@@ -10,18 +10,16 @@ class ProductsModel {
 			//open connect with DB1
 			const connect = await db.connect()
 			const sql =
-				'INSERT INTO bytemall ( productsName, price, date, keyword, available, img, location, status, productsCode, description ) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) returning *'
+				'INSERT INTO bytemall ( productsName, price, keyword, available, img, location, status, description ) values ($1, $2, $3, $4, $5, $6, $7, $8) returning *'
 			//run query
 			const result = await connect.query(sql, [
 				p.productsName,
 				p.price,
-				p.date === '' ? new Date().toDateString() : p.date,
 				p.keyword,
 				p.available === '' ? (p.available = true) : (p.available = false),
 				p.img,
 				p.location,
 				p.status,
-				p.productsCode,
 				p.description,
 			])
 			//release connect

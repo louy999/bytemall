@@ -1,17 +1,27 @@
-import imgTest from "../img/chare-3d-model-fbx.jpg";
+import env from "../env";
+import { useState } from "react";
 
 const ProductAvailable = (props: any) => {
+  const [showImg, setShowImg] = useState(
+    `${env.img}/image/${props.data.img[0]}`
+  );
+  const handleClick = (e: any) => {
+    setShowImg(e.target.src);
+  };
   return (
     <>
       <div className="container-img">
-        <img src={imgTest} alt="" />
+        <img src={showImg} alt="" className="rounded" />
+
         <div className="con-select">
-          <img src={imgTest} alt="" />
-          <img src={imgTest} alt="" />
-          <img src={imgTest} alt="" />
-          <img src={imgTest} alt="" />
-          <img src={imgTest} alt="" />
-          <img src={imgTest} alt="" />
+          {props.data.img.map((i: any) => (
+            <img
+              src={`${env.img}/image/${i}`}
+              onClick={handleClick}
+              alt=""
+              className="rounded"
+            />
+          ))}
         </div>
       </div>
       <div className="container-details">
