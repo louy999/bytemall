@@ -7,6 +7,7 @@ import NoURl from "./layout/noUrl";
 import LockScreen from "./component/dashboard/lockScreen";
 import Dashboard from "./component/dashboard/dashboard";
 import BasicModal from "./layout/addProducts";
+import DashProdEdit from "./component/dashboard/dashProEdit";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/dash/lock" element={<LockScreen />} />
         <Route path="/dash" element={<Dashboard />} />
         <Route path="/dash/new" element={<BasicModal />} />
+        <Route path="/dash/pro/:id" element={<DashProdEdit />} />
         <Route path="*" element={<NoURl />} />
       </Routes>
     </div>

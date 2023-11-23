@@ -97,7 +97,7 @@ const SearchAndProducts = () => {
                 <tr key={p.productscode}>
                   <th scope="row">{p.productscode}</th>
                   <td>
-                    <NavLink to={`dash/product/${p.id}`}>
+                    <NavLink to={`/dash/pro/${p.id}`}>
                       <img src={`${env.img}/image/${p.img[0]}`} alt="" />
                     </NavLink>
                   </td>
