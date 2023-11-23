@@ -1,5 +1,6 @@
 .navbar {
   overflow: hidden;
+  z-index: 345678;
   height: 60vh;
 
   video {
@@ -13,9 +14,33 @@
     a {
       img {
         width: 15em;
-        opacity: 0.5;
+        opacity: 0.8;
         border-radius: 32px;
         object-fit: contain;
+      }
+    }
+  }
+}
+@media (max-width: 780px) {
+  .navbar {
+    overflow: hidden;
+    height: 50vh;
+
+    video {
+      position: absolute;
+      z-index: -2;
+    }
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      a {
+        img {
+          width: 12em;
+          opacity: 0.8;
+          border-radius: 32px;
+          object-fit: contain;
+        }
       }
     }
   }

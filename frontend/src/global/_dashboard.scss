@@ -1,0 +1,14 @@
+.container.searchAndProd {
+  margin: 5em auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  .search.container {
+    width: 100%;
+  }
+  .container.prod {
+    img {
+      width: 10em;
+    }
+  }
+}

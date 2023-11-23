@@ -1,5 +1,4 @@
 .container.productsShows {
-  direction: rtl;
   width: 100%;
   margin-top: 2em;
   display: flex;
@@ -8,5 +7,31 @@
   .card {
     width: 30%;
     margin: 10px;
+  }
+}
+@media (max-width: 780px) {
+  .container.productsShows {
+    width: 100%;
+    margin-top: 2em;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    .card {
+      width: 45%;
+      margin: 10px;
+    }
+  }
+}
+@media (max-width: 430px) {
+  .container.productsShows {
+    width: 100%;
+    margin-top: 2em;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    .card {
+      width: 90%;
+      margin: 10px;
+    }
   }
 }

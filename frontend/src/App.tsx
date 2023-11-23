@@ -8,14 +8,18 @@ import LockScreen from "./component/dashboard/lockScreen";
 import Dashboard from "./component/dashboard/dashboard";
 import BasicModal from "./layout/addProducts";
 import DashProdEdit from "./component/dashboard/dashProEdit";
+import NavHome from "./component/navHome";
 
 function App() {
   return (
     <div className="App">
+      {/* < /> */}
       <Routes>
         <Route path="/" element={<Navigate to="/products" />} />
         <Route path="/products" element={<ProductsShows />} />
+        <Route path="/products" element={<NavHome />} />
         <Route path="/products/:id" element={<SpecificProducts />} />
+        <Route path="/products/:id" element={<NavHome />} />
         {/* <Route path="/dashboard" element={()=>{}} /> */}
         <Route path="/dash/lock" element={<LockScreen />} />
         <Route path="/dash" element={<Dashboard />} />

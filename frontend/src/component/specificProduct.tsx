@@ -3,6 +3,7 @@ import axios from "axios";
 import env from "../env";
 import ProductAvailable from "../layout/productAvailable";
 import ProductNotAvailable from "../layout/productNotAvailable";
+import Suggests from "../layout/suggests";
 
 const SpecificProducts = () => {
   const [data, setData] = useState<any>(null);
@@ -25,13 +26,17 @@ const SpecificProducts = () => {
   return (
     <>
       {loading && <p>Loading...</p>}
+
       <div className="container specificProduct">
-        {data?.available ? (
+        {data === null ? (
+          ""
+        ) : data?.available ? (
           <ProductAvailable data={data} />
         ) : (
           <ProductNotAvailable data={data} />
         )}
       </div>
+      <Suggests data={data} />
     </>
   );
 };

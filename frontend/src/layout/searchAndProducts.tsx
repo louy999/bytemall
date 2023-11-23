@@ -51,7 +51,7 @@ const SearchAndProducts = () => {
     } catch (error) {}
   };
   return (
-    <>
+    <div className="container searchAndProd">
       <div className="search container">
         <div className="input-group">
           <input
@@ -72,7 +72,7 @@ const SearchAndProducts = () => {
         </div>
       </div>
 
-      <div style={{ height: 400, width: "100%" }} className="container">
+      <div style={{ height: 400, width: "100%" }} className="container prod">
         <table className="table">
           <thead>
             <tr>
@@ -128,7 +128,7 @@ const SearchAndProducts = () => {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 };
 

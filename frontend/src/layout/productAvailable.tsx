@@ -8,37 +8,50 @@ const ProductAvailable = (props: any) => {
   const handleClick = (e: any) => {
     setShowImg(e.target.src);
   };
+
   return (
     <>
       <div className="container-img">
         <img src={showImg} alt="" className="rounded" />
 
-        <div className="con-select">
-          {props.data.img.map((i: any) => (
-            <img
-              src={`${env.img}/image/${i}`}
-              onClick={handleClick}
-              alt=""
-              className="rounded"
-            />
-          ))}
-        </div>
+        {props.data?.img && props.data.img.length > 0 && (
+          <div className="con-select">
+            {props.data.img.map((i: any, index: number) => (
+              <img
+                key={index}
+                src={`${env.img}/image/${i}`}
+                onClick={handleClick}
+                alt=""
+                className="rounded"
+              />
+            ))}
+          </div>
+        )}
       </div>
       <div className="container-details">
         <h1>
           {props.data.productsname}({props.data.productscode})
         </h1>
-        <div className="des">{props.data.description}</div>
-        <div>السعر : {props.data.price} ج</div>
+        <div className="des"> {props.data.description}</div>
+        <div>
+          السعر : <span>{props.data.price}ج</span>
+        </div>
 
-        <div> المكان : {props.data.location}</div>
-        <div>الحالة : {props.data.status}</div>
+        <div>
+          {" "}
+          المكان : <span>{props.data.location}</span>
+        </div>
+        <div>
+          الحالة : <span>{props.data.status}</span>
+        </div>
+        <div className="number">
+          للتواصل : <span>01092042027</span>
+        </div>
         <div>
           {props.data.keyword.map((p: any) => (
             <span>{p} </span>
           ))}
         </div>
-        <div>للتواصل : 01092042027</div>
       </div>
     </>
   );
