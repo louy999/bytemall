@@ -65,7 +65,11 @@ export default function BasicModal() {
           input.img.push(res.data);
           return setShowImg(
             input.img.map((i) => (
-              <img src={`${env.img}/image/${i}`} alt="" className="rounded" />
+              <img
+                src={`${env.img}/image/${i}`}
+                alt=""
+                className="rounded img"
+              />
             ))
           );
         });
