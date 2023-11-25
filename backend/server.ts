@@ -17,27 +17,33 @@ import upload from './upload_img/index'
 const port = config.port || 3000
 
 // app.use(cors())
+// app.use(
+// 	cors({
+// 		allowedHeaders: [
+// 			'Origin',
+// 			'X-Requested-With',
+// 			'Content-Type',
+// 			'Accept',
+// 			'X-Access-Token',
+// 			'Authorization',
+// 			'Access-Control-Allow-Origin',
+// 			'Access-Control-Allow-Headers',
+// 			'Access-Control-Allow-Methods',
+// 		],
+// 		methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+// 		preflightContinue: true,
+// 		origin: 'https://bytemall.vercel.app/',
+// 	})
+// )
 app.use(
 	cors({
-		allowedHeaders: [
-			'Origin',
-			'X-Requested-With',
-			'Content-Type',
-			'Accept',
-			'X-Access-Token',
-			'Authorization',
-			'Access-Control-Allow-Origin',
-			'Access-Control-Allow-Headers',
-			'Access-Control-Allow-Methods',
-		],
-		methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-		preflightContinue: true,
-		origin: 'https://bytemall.vercel.app/',
+		origin: 'https://bytemall.vercel.app/', // Replace with your frontend domain
+		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+		credentials: true, // Enable credentials (e.g., cookies, authorization headers)
 	})
 )
 //security and consol req
 app.use(helmet.crossOriginResourcePolicy({policy: 'cross-origin'}))
-xhr.open('GET', 'http://https//bytemall.onrender.com/api/pro', true)
 
 // routes
 app.use('/api', routes)
