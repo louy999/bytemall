@@ -12,28 +12,34 @@
   direction: rtl;
 }
 .alert {
-  position: absolute;
-  left: 0;
   border: 1px solid var(--accent-100);
   background: var(--accent-100);
   color: white;
   font-weight: bold;
   padding: 10px;
-  &.av {
-    top: 22.5em;
-  }
-  &.des {
-    top: 12.5em;
-  }
-  &.img {
-    top: 3.5em;
-  }
+  // &.av {
+  //   top: 22.5em;
+  // }
+  // &.des {
+  //   top: 12.5em;
+  // }
+  // &.img {
+  //   top: 3.5em;
+  // }
 }
 .btn-primary {
   background: var(--accent-100);
   border: none;
   &:hover {
     background-color: var(--accent-200);
+  }
+}
+.btn.btn-outline-secondary {
+  border: 2px solid var(--accent-100);
+  color: var(--accent-100);
+  &:hover {
+    background-color: var(--accent-200);
+    color: white;
   }
 }
 .rounded.img {

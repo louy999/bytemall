@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import env from "../../../env";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
 const ProdImg = () => {
   const [file, setFile] = useState<any>(null);
   const [showImg, setShowImg] = useState<any>("");
-  // const [imgInf, setImgInf] = useState<any>([]);
+
+  const [loading, setLoading] = useState(false);
+
   const [input, setInput] = useState<any>([]);
   const [err, setErr] = useState<any>("");
   const handleFileChange = (event: any) => {
@@ -32,12 +35,6 @@ const ProdImg = () => {
               />
             ))
           );
-        })
-        .then(() => {
-          setActive(<div className="alert img">تم تغير الصور</div>);
-          setTimeout(() => {
-            // setActive("");
-          }, 5000);
         });
     } else {
       setErr("اختار الصورة اولا");
@@ -47,11 +44,20 @@ const ProdImg = () => {
     }
   };
   const updateImg = async () => {
+    setLoading(true);
     try {
-      await axios.patch(`${env.url}/pro/img`, {
-        id: window.location.pathname.slice(10),
-        img: input,
-      });
+      await axios
+        .patch(`${env.url}/pro/img`, {
+          id: window.location.pathname.slice(10),
+          img: input,
+        })
+        .then(() => {
+          setActive(<div className="alert des">تم تغير الصورة</div>);
+          setTimeout(() => {
+            setActive("");
+          }, 5000);
+          setLoading(false);
+        });
     } catch (error) {
       console.log(error);
     }
@@ -81,7 +87,11 @@ const ProdImg = () => {
           onClick={updateImg}
           id="inputGroupFileAddon04"
         >
-          تعديل
+          {loading ? (
+            <FontAwesomeIcon icon={faRotateRight} className="btn btn-danger" />
+          ) : (
+            "تعديل"
+          )}
         </button>
         {active}
       </div>

@@ -7,7 +7,7 @@
 
   .container-img {
     width: 50%;
-    height: 50%;
+    height: 60%;
     display: flex;
     justify-content: start;
     flex-wrap: wrap;
@@ -15,6 +15,7 @@
     > img {
       border-radius: 15px;
       width: 100%;
+      height: 100%;
     }
     .con-select {
       cursor: pointer;
@@ -87,45 +88,17 @@
     flex-wrap: wrap;
     .container-img {
       width: 100%;
-      height: 50%;
-      display: flex;
-      justify-content: start;
-      flex-wrap: wrap;
       margin: 20px 0;
-      > img {
-        border-radius: 15px;
-        width: 100%;
-      }
-      .con-select {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        img {
-          border-radius: 10px;
-          margin: 1em;
-          width: 5em;
-        }
-      }
     }
     .container-details {
       width: 100%;
-      height: 55%;
-      margin-right: 2em;
       h1 {
-        font-weight: bold;
-        font-size: 3em;
-        margin: 0.5em 0;
-      }
-      .des {
-        font-size: 1.2em;
-        margin: 2em 0;
-        width: 70%;
+        margin-top: 2em;
       }
     }
   }
   h1 {
-    margin-top: 7em;
+    margin-top: 11em;
   }
   .container.card-con {
     justify-content: center;

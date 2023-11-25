@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import env from "../env";
 import Navbar from "./navbar";
+import { Helmet } from "react-helmet-async";
 
 const ProductsShows = () => {
   const [data, setData] = useState<any>(null);
@@ -24,6 +25,9 @@ const ProductsShows = () => {
 
   return (
     <>
+      <Helmet>
+        <title>bytemall-المنتجات</title>
+      </Helmet>
       <Navbar />
       {loading && <p>Loading...</p>}
       <div className="container productsShows">

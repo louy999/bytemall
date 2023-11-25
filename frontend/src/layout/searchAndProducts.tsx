@@ -3,6 +3,7 @@ import {
   faMagnifyingGlass,
   faPlus,
   faTrash,
+  faRotateRight,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
@@ -43,11 +44,14 @@ const SearchAndProducts = () => {
   useEffect(() => {
     getAllProducts();
   }, []);
+  const [loading, setLoading] = useState(false);
   const DeletePro = async (idPro: any) => {
+    setLoading(true);
     try {
-      await axios
-        .delete(`${env.url}/pro/${idPro}`)
-        .then(() => getAllProducts());
+      await axios.delete(`${env.url}/pro/${idPro}`).then(() => {
+        getAllProducts();
+        setLoading(false);
+      });
     } catch (error) {}
   };
   return (
@@ -112,7 +116,7 @@ const SearchAndProducts = () => {
                         handleClick();
                         DeletePro(p.id);
                       }}
-                      icon={faTrash}
+                      icon={loading ? faRotateRight : faTrash}
                       className="btn btn-danger"
                     />
                   </td>

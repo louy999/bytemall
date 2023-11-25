@@ -11,6 +11,7 @@ const Suggests = (props: any) => {
       const filteredData = response.data.data.filter(
         (p: any) =>
           p.available &&
+          p.id !== props.data.id &&
           props.data &&
           props.data.keyword &&
           p.keyword[0] === props.data.keyword[0]

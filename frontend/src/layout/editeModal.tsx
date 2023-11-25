@@ -44,7 +44,6 @@ const EditModal = (props: any) => {
             <ProdKeyword />
             <ProdImg />
           </form>
-          <Button onClick={props.handleClose}>غلق</Button>
           <Button onClick={() => window.location.reload()}>تاكيد</Button>
         </Box>
       </Modal>

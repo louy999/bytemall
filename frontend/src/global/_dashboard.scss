@@ -3,15 +3,21 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  font-size: 1.5em;
   .search.container {
     width: 100%;
   }
   .container.prod {
+    overflow: scroll;
     img {
       width: 10em;
+      height: 5em;
     }
   }
 }
 .MuiBox-root.css-6z8jno {
-  width: 100%;
+  width: 80%;
+}
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  font-size: 1.5em !important;
 }

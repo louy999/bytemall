@@ -1,11 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import env from "../../../env";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
 
 const ProdKeyword = () => {
   const [input, setInput] = useState<any>({
     keyword: "",
   });
+
+  const [loading, setLoading] = useState(false);
 
   const [active, setActive] = useState<any>("");
   const handelChange = (e: any) => {
@@ -22,6 +26,8 @@ const ProdKeyword = () => {
     }
   };
   const updatePrice = async () => {
+    setLoading(true);
+
     try {
       await axios
         .patch(`${env.url}/pro/keyword`, {
@@ -29,10 +35,11 @@ const ProdKeyword = () => {
           keyword: input.keyword,
         })
         .then(() => {
-          setActive(<div className="alert">تم تغير التوافر</div>);
+          setActive(<div className="alert">تم تغير كلمات</div>);
           setTimeout(() => {
             setActive("");
           }, 5000);
+          setLoading(false);
         });
     } catch (error) {
       console.log(error);
@@ -55,7 +62,11 @@ const ProdKeyword = () => {
           id="button-addon2"
           onClick={updatePrice}
         >
-          تعديل
+          {loading ? (
+            <FontAwesomeIcon icon={faRotateRight} className="btn btn-danger" />
+          ) : (
+            "تعديل"
+          )}
         </button>
         {active}
       </div>

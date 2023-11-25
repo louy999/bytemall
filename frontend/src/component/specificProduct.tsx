@@ -5,6 +5,7 @@ import ProductAvailable from "../layout/productAvailable";
 import ProductNotAvailable from "../layout/productNotAvailable";
 import Suggests from "../layout/suggests";
 import NavHome from "./navHome";
+import { Helmet } from "react-helmet-async";
 
 const SpecificProducts = () => {
   const [data, setData] = useState<any>(null);
@@ -26,6 +27,9 @@ const SpecificProducts = () => {
   }, []);
   return (
     <>
+      <Helmet>
+        <title>bytemall-المنتج</title>
+      </Helmet>
       <NavHome />
       {loading && <p>Loading...</p>}
 

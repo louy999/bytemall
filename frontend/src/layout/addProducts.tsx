@@ -92,12 +92,10 @@ export default function BasicModal() {
   return (
     <form className="container">
       <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
-          اسم المنتج
-        </label>
         <input
           type="text"
           required
+          placeholder="اسم المنتج"
           onChange={handelChange}
           name="productsName"
           className="form-control"
@@ -105,11 +103,9 @@ export default function BasicModal() {
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
-          سعر المنتج
-        </label>
         <input
           type="number"
+          placeholder="    سعر المنتج"
           onChange={handelChange}
           required
           name="price"
@@ -118,11 +114,9 @@ export default function BasicModal() {
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="exampleFormControlTextarea1" className="form-label">
-          كلمات مفتاحية
-        </label>
         <textarea
           className="form-control"
+          placeholder=" كلمات مفتاحية"
           onChange={handelChange}
           required
           name="keyword"
@@ -136,7 +130,6 @@ export default function BasicModal() {
           className="form-control"
           id="inputGroupFile04"
           aria-describedby="inputGroupFileAddon04"
-          aria-label="Upload"
           onChange={handleFileChange}
         />
         <button
@@ -145,18 +138,16 @@ export default function BasicModal() {
           id="inputGroupFileAddon04"
           onClick={addImg}
         >
-          Button
+          اظهار
         </button>
       </div>
       <div>{showImg}</div>
       <div>{err}</div>
 
       <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
-          موقع المنتج
-        </label>
         <input
           type="text"
+          placeholder=" موقع المنتج"
           onChange={handelChange}
           name="location"
           required
@@ -165,12 +156,7 @@ export default function BasicModal() {
         />
       </div>
       <div className="mb-3">
-        <select
-          className="form-select"
-          onChange={handelChange}
-          name="status"
-          aria-label="Default select example"
-        >
+        <select className="form-select" onChange={handelChange} name="status">
           <option value="جديد" selected disabled>
             اختار الحالة
           </option>
@@ -180,11 +166,9 @@ export default function BasicModal() {
         </select>
       </div>
       <div className="mb-3">
-        <label htmlFor="exampleFormControlTextarea1" className="form-label">
-          وصف المنتج
-        </label>
         <textarea
           onChange={handelChange}
+          placeholder="وصف المنتج"
           name="description"
           className="form-control"
           id="exampleFormControlTextarea1"
