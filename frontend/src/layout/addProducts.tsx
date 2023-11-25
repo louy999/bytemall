@@ -121,7 +121,7 @@ export default function BasicModal() {
   };
 
   return (
-    <form className="container addProd">
+    <form className="container addd">
       <div className="mb-3">
         <input
           type="text"
