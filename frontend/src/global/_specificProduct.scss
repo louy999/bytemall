@@ -89,6 +89,9 @@
     .container-img {
       width: 100%;
       margin: 20px 0;
+      .con-select {
+        flex-wrap: wrap;
+      }
     }
     .container-details {
       width: 100%;

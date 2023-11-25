@@ -192,6 +192,9 @@
     width: 100%;
     margin: 20px 0;
   }
+  .container.specificProduct .container-img .con-select {
+    flex-wrap: wrap;
+  }
   .container.specificProduct .container-details {
     width: 100%;
   }
@@ -289,6 +292,17 @@
 
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
   font-size: 1.5em !important;
+}
+
+.nav.nav-dash {
+  background-color: var(--accent-100);
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+.nav.nav-dash a {
+  color: white;
+  font-size: 1.5em;
 }
 
 * {

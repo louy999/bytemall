@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchAndProducts from "../../layout/searchAndProducts";
+import NavDash from "./navdash";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const Dashboard = () => {
   }, []);
   return (
     <>
+      <NavDash />
       <SearchAndProducts />
     </>
   );
