@@ -310,7 +310,7 @@
   height: 100%;
 }
 
-form.container {
+form.container.addProd {
   position: relative;
   top: 10em;
 }
