@@ -11,12 +11,18 @@ export default function BasicModal() {
     } else {
     }
   }, []);
+  const funErr = (textErr: any) => {
+    setErr(textErr);
+    setTimeout(() => {
+      setErr("");
+    }, 5000);
+  };
   interface InputState {
     productsName: string;
-    price: number;
+    price: string;
     keyword: any;
     available: string;
-    img: string[];
+    img: any[];
     location: string;
     status: string;
     description: string;
@@ -24,7 +30,7 @@ export default function BasicModal() {
 
   const [input, setInput] = useState<InputState>({
     productsName: "",
-    price: 12,
+    price: "",
     keyword: [],
     available: "",
     img: [],
@@ -32,7 +38,7 @@ export default function BasicModal() {
     status: "",
     description: "",
   });
-  const [file, setFile] = useState<any>(null);
+  const [file, setFile] = useState<any>([]);
   const [showImg, setShowImg] = useState<any>("");
   const [err, setErr] = useState<any>("");
 
@@ -50,43 +56,68 @@ export default function BasicModal() {
     }
     console.log(input.status);
   };
-  const handleFileChange = (event: any) => {
-    setFile(event.target.files[0]);
+  const handleFileChange = (e: any) => {
+    const files = Array.from(e.target.files);
+    setFile(files);
   };
   const addImg = () => {
     if (file !== null) {
-      const formData = new FormData();
-      formData.append("image", file);
-      axios
-        .post(`${env.img}/upload`, formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        })
-        .then((res: any) => {
-          input.img.push(res.data);
-          return setShowImg(
-            input.img.map((i) => (
-              <img
-                src={`${env.img}/image/${i}`}
-                alt=""
-                className="rounded img"
-              />
-            ))
-          );
-        });
+      file.map((f: any) => {
+        const formData = new FormData();
+        formData.append("image", f);
+        axios
+          .post(`${env.img}/upload`, formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+          })
+          .then((res: any) => {
+            input.img.push(res.data);
+            return setShowImg(
+              input.img.map((i) => (
+                <img
+                  src={`${env.img}/image/${i}`}
+                  alt=""
+                  className="rounded img"
+                />
+              ))
+            );
+          });
+      });
     } else {
-      setErr("اختار الصورة اولا");
-      setTimeout(() => {
-        setErr("");
-      }, 5000);
+      funErr("اختار الصورة اولا");
     }
   };
+
   const addProjects = async (e: any) => {
     e.preventDefault();
-    try {
-      await axios.post(`${env.url}/pro`, input).then((res) => {
-        navigate(`/dash/pro/${res.data.data.id}`);
-      });
-    } catch (error) {}
+    if (input.productsName !== "") {
+      if (input.price !== "") {
+        if (input.keyword !== "") {
+          if (input.location !== "") {
+            if (input.status !== "") {
+              if (input.description !== "") {
+                try {
+                  await axios.post(`${env.url}/pro`, input).then((res) => {
+                    navigate(`/dash/pro/${res.data.data.id}`);
+                  });
+                } catch (error) {}
+              } else {
+                setErr("اخنار الوصف");
+              }
+            } else {
+              setErr("اختار الحالة");
+            }
+          } else {
+            setErr("اختار الموقع");
+          }
+        } else {
+          setErr("اختار الكلمات");
+        }
+      } else {
+        setErr("اختار السعر");
+      }
+    } else {
+      setErr("اختار الاسم");
+    }
   };
 
   return (
@@ -126,6 +157,7 @@ export default function BasicModal() {
 
       <div className="input-group">
         <input
+          multiple
           type="file"
           className="form-control"
           id="inputGroupFile04"
@@ -142,7 +174,6 @@ export default function BasicModal() {
         </button>
       </div>
       <div>{showImg}</div>
-      <div>{err}</div>
 
       <div className="mb-3">
         <input
@@ -181,6 +212,7 @@ export default function BasicModal() {
         className="btn btn-primary"
         onClick={addProjects}
       />
+      <div>{err}</div>
     </form>
   );
 }

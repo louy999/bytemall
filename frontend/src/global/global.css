@@ -305,6 +305,16 @@
   font-size: 1.5em;
 }
 
+.css-79ws1d-MuiModal-root {
+  width: 100%;
+  height: 100%;
+}
+
+form.container {
+  position: relative;
+  top: 10em;
+}
+
 * {
   margin: 0;
   padding: 0;
