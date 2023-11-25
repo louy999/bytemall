@@ -37,6 +37,7 @@ app.use(
 )
 //security and consol req
 app.use(helmet.crossOriginResourcePolicy({policy: 'cross-origin'}))
+xhr.open('GET', 'http://https//bytemall.onrender.com/api/pro', true)
 
 // routes
 app.use('/api', routes)
