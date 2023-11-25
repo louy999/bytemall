@@ -79,7 +79,9 @@ export default function BasicModal() {
   const addProjects = async (e: any) => {
     e.preventDefault();
     try {
-      await axios.post(`${env.url}/pro`, input);
+      await axios.post(`${env.url}/pro`, input).then((res) => {
+        navigate(`/dash/pro/${res.data.data.id}`);
+      });
     } catch (error) {}
   };
 
