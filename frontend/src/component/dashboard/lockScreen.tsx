@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import env from "../../env";
 import { useNavigate } from "react-router-dom";
 const LockScreen = () => {
+  // console.log(process.env);
+
   const navigate = useNavigate();
 
   const [input, setInput] = useState<any>({

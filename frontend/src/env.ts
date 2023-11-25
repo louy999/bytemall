@@ -1,6 +1,6 @@
 const env = {
-  url: "http://localhost:5000/api",
-  img: "http://localhost:5000",
-  pass: "1234",
+  url: process.env.REACT_APP_URL,
+  img: process.env.REACT_APP_IMG,
+  pass: process.env.REACT_APP_PASS,
 };
 export default env;

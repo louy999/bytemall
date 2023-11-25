@@ -44,10 +44,13 @@ const ProductAvailable = (props: any) => {
         <div>
           الحالة : <span>{props.data.status}</span>
         </div>
+        <div>
+          التاريخ : <span>{props.data.date.slice(0, 10)}</span>
+        </div>
         <div className="number">
           للتواصل : <span>01092042027</span>
         </div>
-        <div>
+        <div className="keyword">
           {props.data.keyword.map((p: any) => (
             <span>{p} </span>
           ))}

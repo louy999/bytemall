@@ -86,6 +86,90 @@ routes.patch('/img', async (req: Request, res: Response, next) => {
 		next(err)
 	}
 })
+routes.patch('/name', async (req: Request, res: Response, next) => {
+	try {
+		const products = await productsModel.updateProductsNameProducts(req.body)
+		res.json({
+			status: 'success',
+			data: products,
+			message: 'products updated successfully',
+		})
+	} catch (err) {
+		next(err)
+	}
+})
+routes.patch('/price', async (req: Request, res: Response, next) => {
+	try {
+		const products = await productsModel.updatePriceProducts(req.body)
+		res.json({
+			status: 'success',
+			data: products,
+			message: 'products updated successfully',
+		})
+	} catch (err) {
+		next(err)
+	}
+})
+routes.patch('/keyword', async (req: Request, res: Response, next) => {
+	try {
+		const products = await productsModel.updateKeywordProducts(req.body)
+		res.json({
+			status: 'success',
+			data: products,
+			message: 'products updated successfully',
+		})
+	} catch (err) {
+		next(err)
+	}
+})
+routes.patch('/available', async (req: Request, res: Response, next) => {
+	try {
+		const products = await productsModel.updateAvailableProducts(req.body)
+		res.json({
+			status: 'success',
+			data: products,
+			message: 'products updated successfully',
+		})
+	} catch (err) {
+		next(err)
+	}
+})
+routes.patch('/description', async (req: Request, res: Response, next) => {
+	try {
+		const products = await productsModel.updateDesProducts(req.body)
+		res.json({
+			status: 'success',
+			data: products,
+			message: 'products updated successfully',
+		})
+	} catch (err) {
+		next(err)
+	}
+})
+routes.patch('/status', async (req: Request, res: Response, next) => {
+	try {
+		const products = await productsModel.updateStatusProducts(req.body)
+		res.json({
+			status: 'success',
+			data: products,
+			message: 'products updated successfully',
+		})
+	} catch (err) {
+		next(err)
+	}
+})
+routes.patch('/location', async (req: Request, res: Response, next) => {
+	try {
+		const products = await productsModel.updateLocationProducts(req.body)
+		res.json({
+			status: 'success',
+			data: products,
+			message: 'products updated successfully',
+		})
+	} catch (err) {
+		next(err)
+	}
+})
 //delete products
 routes.delete('/:id', async (req: Request, res: Response, next) => {
 	try {

@@ -99,7 +99,7 @@
   direction: rtl;
   align-items: center;
   height: 65vh;
-  margin: 70px;
+  margin: 70px 0;
 }
 .container.specificProduct .container-img {
   width: 50%;
@@ -142,6 +142,14 @@
 }
 .container.specificProduct .container-details div {
   margin: 10px 0;
+}
+.container.specificProduct .container-details div.keyword {
+  border: 2px solid var(--primary-100);
+  border-radius: 23px;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px 5px;
+  margin: 10px;
 }
 .container.specificProduct .container-details div.avil > span {
   color: var(--bg-100);
@@ -210,6 +218,15 @@
     font-size: 1.2em;
     margin: 2em 0;
     width: 70%;
+  }
+  h1 {
+    margin-top: 7em;
+  }
+  .container.card-con {
+    justify-content: center;
+  }
+  .container.card-con .card {
+    width: 45%;
   }
 }
 .navHome {
@@ -282,11 +299,62 @@
   width: 10em;
 }
 
+.MuiBox-root.css-6z8jno {
+  width: 100%;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   direction: rtl;
+}
+
+.alert {
+  position: absolute;
+  left: 0;
+  border: 1px solid var(--accent-100);
+  background: var(--accent-100);
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+}
+.alert.av {
+  top: 22.5em;
+}
+.alert.des {
+  top: 12.5em;
+}
+.alert.img {
+  top: 3.5em;
+}
+
+.btn-primary {
+  background: var(--accent-100);
+  border: none;
+}
+.btn-primary:hover {
+  background-color: var(--accent-200);
+}
+
+.rounded.img {
+  width: 100px;
+}
+
+.btn-check:checked + .btn,
+:not(.btn-check) + .btn:active,
+.btn:first-child:active,
+.btn.active,
+.btn.show {
+  background: var(--accent-100);
+  border: none;
+}
+.btn-check:checked + .btn:hover,
+:not(.btn-check) + .btn:active:hover,
+.btn:first-child:active:hover,
+.btn.active:hover,
+.btn.show:hover {
+  background-color: var(--accent-200);
 }
 
 /* cyrillic-ext */

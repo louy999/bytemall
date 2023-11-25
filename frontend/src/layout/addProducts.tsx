@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import env from "../env";
 
+import { useNavigate } from "react-router-dom";
 export default function BasicModal() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.items === undefined) {
+      navigate("/dash/lock");
+    } else {
+    }
+  }, []);
   interface InputState {
     productsName: string;
     price: number;
@@ -35,10 +43,12 @@ export default function BasicModal() {
         ...prev,
         [e.target.name]: e.target.value.split(" "),
       }));
+      console.log(input.status);
     } else {
       // Otherwise, update the state normally
       setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     }
+    console.log(input.status);
   };
   const handleFileChange = (event: any) => {
     setFile(event.target.files[0]);
@@ -72,6 +82,7 @@ export default function BasicModal() {
       await axios.post(`${env.url}/pro`, input);
     } catch (error) {}
   };
+
   return (
     <form className="container">
       <div className="mb-3">
@@ -148,17 +159,19 @@ export default function BasicModal() {
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
-          حالة المنتج
-        </label>
-        <input
-          type="text"
-          required
+        <select
+          className="form-select"
           onChange={handelChange}
           name="status"
-          className="form-control"
-          id="exampleFormControlInput1"
-        />
+          aria-label="Default select example"
+        >
+          <option value="جديد" selected disabled>
+            اختار الحالة
+          </option>
+          <option value="جديد">جديد</option>
+          <option value="مستعمل">مستعمل</option>
+          <option value=" مستعمل كجديد">مستعمل كجديد</option>
+        </select>
       </div>
       <div className="mb-3">
         <label htmlFor="exampleFormControlTextarea1" className="form-label">

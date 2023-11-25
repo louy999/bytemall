@@ -4,6 +4,7 @@ import env from "../env";
 import ProductAvailable from "../layout/productAvailable";
 import ProductNotAvailable from "../layout/productNotAvailable";
 import Suggests from "../layout/suggests";
+import NavHome from "./navHome";
 
 const SpecificProducts = () => {
   const [data, setData] = useState<any>(null);
@@ -25,6 +26,7 @@ const SpecificProducts = () => {
   }, []);
   return (
     <>
+      <NavHome />
       {loading && <p>Loading...</p>}
 
       <div className="container specificProduct">
@@ -36,7 +38,7 @@ const SpecificProducts = () => {
           <ProductNotAvailable data={data} />
         )}
       </div>
-      <Suggests data={data} />
+      {data === null ? "" : <Suggests data={data} />}
     </>
   );
 };

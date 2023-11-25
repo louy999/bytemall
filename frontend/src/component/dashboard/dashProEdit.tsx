@@ -1,10 +1,18 @@
 import axios from "axios";
 import env from "../../env";
 import { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import EditModal from "../../layout/editeModal";
+
 const DashProdEdit = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.items === undefined) {
+      navigate("/dash/lock");
+    } else {
+    }
+  }, []);
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);

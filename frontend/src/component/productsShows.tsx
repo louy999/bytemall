@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import imgTest from "../img/chare-3d-model-fbx.jpg";
 import axios from "axios";
 import env from "../env";
 import Navbar from "./navbar";
@@ -48,7 +47,7 @@ const ProductsShows = () => {
                   للتفاصيل
                 </NavLink>
               </div>
-              <div className="card-footer">{p.date}</div>
+              <div className="card-footer">{p.date.slice(0, 10)}</div>
             </div>
           ) : (
             ""

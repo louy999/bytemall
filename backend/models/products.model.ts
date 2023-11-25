@@ -122,6 +122,118 @@ class ProductsModel {
 		}
 	}
 
+	//update products productsName
+	async updateProductsNameProducts(p: Products): Promise<Products> {
+		try {
+			//open connect with DB
+			const connect = await db.connect()
+			const sql = `UPDATE bytemall SET  productsName=$1  WHERE id=$2 RETURNING *`
+			//run query
+			const result = await connect.query(sql, [p.productsName, p.id])
+			//release connect
+			connect.release()
+			//return created products
+			return result.rows[0]
+		} catch (err) {
+			throw new Error(`could not update  products , ${err}`)
+		}
+	}
+	//update products price
+	async updatePriceProducts(p: Products): Promise<Products> {
+		try {
+			//open connect with DB
+			const connect = await db.connect()
+			const sql = `UPDATE bytemall SET  price=$1  WHERE id=$2 RETURNING *`
+			//run query
+			const result = await connect.query(sql, [p.price, p.id])
+			//release connect
+			connect.release()
+			//return created products
+			return result.rows[0]
+		} catch (err) {
+			throw new Error(`could not update  products , ${err}`)
+		}
+	}
+	//update products keyword
+	async updateKeywordProducts(p: Products): Promise<Products> {
+		try {
+			//open connect with DB
+			const connect = await db.connect()
+			const sql = `UPDATE bytemall SET  keyword=$1  WHERE id=$2 RETURNING *`
+			//run query
+			const result = await connect.query(sql, [p.keyword, p.id])
+			//release connect
+			connect.release()
+			//return created products
+			return result.rows[0]
+		} catch (err) {
+			throw new Error(`could not update  products , ${err}`)
+		}
+	}
+	//update products available
+	async updateAvailableProducts(p: Products): Promise<Products> {
+		try {
+			//open connect with DB
+			const connect = await db.connect()
+			const sql = `UPDATE bytemall SET  available=$1  WHERE id=$2 RETURNING *`
+			//run query
+			const result = await connect.query(sql, [p.available, p.id])
+			//release connect
+			connect.release()
+			//return created products
+			return result.rows[0]
+		} catch (err) {
+			throw new Error(`could not update  products , ${err}`)
+		}
+	}
+	//update products location
+	async updateLocationProducts(p: Products): Promise<Products> {
+		try {
+			//open connect with DB
+			const connect = await db.connect()
+			const sql = `UPDATE bytemall SET  location=$1  WHERE id=$2 RETURNING *`
+			//run query
+			const result = await connect.query(sql, [p.location, p.id])
+			//release connect
+			connect.release()
+			//return created products
+			return result.rows[0]
+		} catch (err) {
+			throw new Error(`could not update  products , ${err}`)
+		}
+	}
+	//update products status
+	async updateStatusProducts(p: Products): Promise<Products> {
+		try {
+			//open connect with DB
+			const connect = await db.connect()
+			const sql = `UPDATE bytemall SET  status=$1  WHERE id=$2 RETURNING *`
+			//run query
+			const result = await connect.query(sql, [p.status, p.id])
+			//release connect
+			connect.release()
+			//return created products
+			return result.rows[0]
+		} catch (err) {
+			throw new Error(`could not update  products , ${err}`)
+		}
+	}
+	//update products description
+	async updateDesProducts(p: Products): Promise<Products> {
+		try {
+			//open connect with DB
+			const connect = await db.connect()
+			const sql = `UPDATE bytemall SET  description=$1  WHERE id=$2 RETURNING *`
+			//run query
+			const result = await connect.query(sql, [p.description, p.id])
+			//release connect
+			connect.release()
+			//return created products
+			return result.rows[0]
+		} catch (err) {
+			throw new Error(`could not update  products , ${err}`)
+		}
+	}
 	//delete products
 	async delete(id: string): Promise<Products> {
 		try {
