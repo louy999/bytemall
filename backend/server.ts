@@ -35,13 +35,21 @@ const port = config.port || 3000
 // 		origin: 'https://bytemall.vercel.app/',
 // 	})
 // )
+
 app.use(
 	cors({
-		origin: 'https://bytemall.vercel.app/', // Replace with your frontend domain
-		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-		credentials: true, // Enable credentials (e.g., cookies, authorization headers)
+		credentials: true,
+		optionsSuccessStatus: 200,
+		methods: '*',
+		origin: [
+			'https://bytemall.vercel.app',
+			'https://bytemall-louy999.vercel.app/',
+			'http://localhost:3000',
+			'http://localhost:3001',
+		],
 	})
 )
+
 //security and consol req
 app.use(helmet.crossOriginResourcePolicy({policy: 'cross-origin'}))
 
