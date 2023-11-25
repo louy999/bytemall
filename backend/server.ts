@@ -32,7 +32,7 @@ app.use(
 		],
 		methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
 		preflightContinue: true,
-		origin: '*',
+		origin: 'https://bytemall.vercel.app/',
 	})
 )
 //security and consol req
