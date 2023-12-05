@@ -11,7 +11,12 @@ const ProductAvailable = (props: any) => {
   const handleClick = (e: any) => {
     setShowImg(e.target.src);
   };
-
+  const message = `محتاج تفاصيل اكتر عن منتج 
+  ${props.data.productsname}
+  سعره 
+  ${props.data.price}
+  الكود
+  ${props.data.productscode}`;
   return (
     <>
       <div className="container-img">
@@ -52,7 +57,7 @@ const ProductAvailable = (props: any) => {
         </div>
         <div className="number">
           للتواصل : <span>01092042027</span>
-          <NavLink to="https://wa.me/201092042027?text=hi">
+          <NavLink to={`https://wa.me/201092042027?text=${message}`}>
             <FontAwesomeIcon className="whatsapp" icon={faSquareWhatsapp} />
           </NavLink>
         </div>
