@@ -11,12 +11,10 @@ const ProductAvailable = (props: any) => {
   const handleClick = (e: any) => {
     setShowImg(e.target.src);
   };
-  const message = `محتاج تفاصيل اكتر عن منتج 
-  ${props.data.productsname}
-  سعره 
-  ${props.data.price}
-  الكود
-  ${props.data.productscode}`;
+  const message = `محتاج تفاصيل اكتر عن منتج   (${props.data.productsname})
+  سعره  ( ${props.data.price}ج)
+  الكود  (${props.data.productscode}) 
+  الرابط (https://bytemall-louy999.vercel.app/products/${props.data.id})`;
   return (
     <>
       <div className="container-img">
