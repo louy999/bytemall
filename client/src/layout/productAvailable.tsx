@@ -52,7 +52,7 @@ const ProductAvailable = (props: any) => {
         </div>
         <div className="number">
           للتواصل : <span>01092042027</span>
-          <NavLink to="https://wa.me/201092042027">
+          <NavLink to="https://wa.me/201092042027?text=hi">
             <FontAwesomeIcon className="whatsapp" icon={faSquareWhatsapp} />
           </NavLink>
         </div>
