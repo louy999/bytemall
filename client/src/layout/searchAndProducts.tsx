@@ -70,9 +70,9 @@ const SearchAndProducts = () => {
               <FontAwesomeIcon icon={faPlus} />
             </button>
           </NavLink>
-          <button type="button" className="btn btn-primary">
+          {/* <button type="button" className="btn btn-primary">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
+          </button> */}
         </div>
       </div>
 
