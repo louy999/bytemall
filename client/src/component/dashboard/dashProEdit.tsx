@@ -87,7 +87,8 @@ const DashProdEdit = () => {
             type="button"
             onClick={() => {
               navigator.clipboard.writeText(
-                `https://bytemall-louy999.vercel.app/products/${window.location.pathname.slice(
+                `${data?.description}
+                https://bytemall-louy999.vercel.app/products/${window.location.pathname.slice(
                   10
                 )}`
               );
