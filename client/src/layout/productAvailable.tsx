@@ -1,5 +1,8 @@
 import env from "../env";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSquareWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { NavLink } from "react-router-dom";
 
 const ProductAvailable = (props: any) => {
   const [showImg, setShowImg] = useState(
@@ -49,7 +52,11 @@ const ProductAvailable = (props: any) => {
         </div>
         <div className="number">
           للتواصل : <span>01092042027</span>
+          <NavLink to="https://wa.me/201092042027">
+            <FontAwesomeIcon className="whatsapp" icon={faSquareWhatsapp} />
+          </NavLink>
         </div>
+
         <div className="keyword">
           {props.data.keyword.map((p: any) => (
             <span>{p} </span>
