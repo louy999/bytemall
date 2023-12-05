@@ -41,16 +41,6 @@ app.use(
 	})
 )
 
-// app.use((req, res, next) => {
-// 	res.header(
-// 		'Access-Control-Allow-Origin',
-// 		'https://bytemall-louy999.vercel.app'
-// 	)
-// 	res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
-// 	res.header('Access-Control-Allow-Headers', 'Content-Type')
-// 	next()
-// })
-
 //security and consol req
 app.use(helmet.crossOriginResourcePolicy({policy: 'cross-origin'}))
 
